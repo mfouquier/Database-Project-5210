@@ -1,0 +1,19 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/app.css">
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="container">
+            <h1><strong>Photo Dojo</strong></h1>
+            <p class="lead">We currently have <strong>
+                    <%= count %>
+                </strong> users in the Dojo! </p>
+            <form method="POST" action='/register'>
+                <input type="text" class="form" name="username" placeholder="Enter a Username">
+                <button>Join Now</button>
+            </form>
+        </div>
+    </div>
+</body>
