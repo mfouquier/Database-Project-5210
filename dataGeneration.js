@@ -134,4 +134,25 @@ connection.query(a, [uniquePhotoTag], function (error, results) {
     console.log(results);
 })
 
+//************** Create a Bot that likes all photos ****************
+var q = 'insert into users (username) values ("Botty_McBotterson")';
+connection.query(q, function (error, results, fields) {
+    if (error) throw error;
+})
+
+var likes_data = [];
+for (var i = 0; i < 50; i++) {
+    likes_data.push([
+        i + 1,
+        51
+    ]);
+}
+
+var a = 'INSERT INTO likes (photo_id, user_id) VALUES ?';
+
+connection.query(a, [likes_data], function (error, results) {
+    if (error) throw error;
+    console.log(results);
+})
+
 connection.end();
