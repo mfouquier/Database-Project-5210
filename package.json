@@ -1,0 +1,24 @@
+{
+  "name": "photodojo",
+  "version": "1.0.0",
+  "description": "Final project for 5210 Database Systems",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfouquier/Database-Project-5210.git"
+  },
+  "author": "Matthew Fouquier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfouquier/Database-Project-5210/issues"
+  },
+  "homepage": "https://github.com/mfouquier/Database-Project-5210#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "mysql": "^2.18.1"
+  }
+}
