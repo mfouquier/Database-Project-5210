@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS ig_clone;
-CREATE DATABASE ig_clone;
-USE ig_clone; 
+DROP DATABASE IF EXISTS photoDojo;
+CREATE DATABASE photoDojo;
+USE photoDojo; 
 
 CREATE TABLE users (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -67,6 +67,21 @@ CREATE TABLE unfollows (
     PRIMARY KEY(follower_id, followee_id)
 );
 
+
+-- Triggers 
+DELIMITER $$
+ 	create trigger prevent_self_follows
+ 		before insert on follows for each row 
+ 			begin 
+ 					if new.follower_id = new.followee_id
+ 				then
+ 					signal sqlstate '45000'
+ 					set message_text = 'You cannot follow yourself!';
+ 				end if;
+ 			end
+ 			$$
+DELIMITER ;
+
 DELIMITER $$
 create trigger capture_unfollows
 	after delete on follows for each row 	
@@ -76,6 +91,7 @@ create trigger capture_unfollows
 	end;
 $$
 DELIMITER ;
+
 
 -- INDEXES
 CREATE INDEX IX_PhotosUserID
@@ -93,7 +109,8 @@ ON follows(follower_id, followee_id);
 CREATE INDEX IX_tagID
 ON tag(photo_id, tag_id);
 
---VIEWS
+
+-- VIEWS
 CREATE VIEW LikedPhotos AS
 select username, image_url, count(l.photo_id) as likes
 from photos p 
