@@ -1,3 +1,6 @@
+--Delete a Follow to show that the unfollows table gets populated
+DELETE FROM follows WHERE follower_id LIKE 50;
+
 -- Query 1 -> 5 newest / oldest users
 select username, created_at from users order by created_at limit 5;
 select username, created_at from users order by created_at desc limit 5;
